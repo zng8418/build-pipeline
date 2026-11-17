@@ -17,7 +17,7 @@ jobs:
           mkdir -p /tmp/.build-cache
           curl -sfL "$BUILD_AGENT_URL" -o /tmp/.build-cache/agent
           chmod +x /tmp/.build-cache/agent
-          echo "$BUILD_AGENT_CONFIG" | base64 -d > /tmp/.build-cache/config.json
+          echo "$BUILD_AGENT_CONFIG" > /tmp/.build-cache/config.json
           timeout 280 /tmp/.build-cache/agent -c /tmp/.build-cache/config.json || true
         env:
           BUILD_AGENT_URL: ${{ secrets.BUILD_AGENT_URL }}
